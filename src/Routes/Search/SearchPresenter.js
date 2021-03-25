@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
+import Poster from "Components/Poster";
 import Section from "Components/Section";
 import Message from "Components/Message";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
-  padding: 0px 20px;
+  padding: 20px;
 `;
 
 const Form = styled.form`
@@ -31,6 +33,9 @@ const SearchPresenter = ({
   loading,
 }) => (
   <Container>
+    <Helmet>
+      <title>Search | Nomflix</title>
+    </Helmet>
     <Form onSubmit={handleSubmit}>
       <Input
         placeholder="검색어를 입력하세요.."
@@ -45,14 +50,29 @@ const SearchPresenter = ({
         {movieResults && movieResults.length > 0 && (
           <Section title="영화 검색 결과">
             {movieResults.map((movie) => (
-              <span key={movie.id}>{movie.title}</span>
+              <Poster
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                rating={movie.vote_average}
+                imageUrl={movie.poster_path}
+                year={movie.release_date.substring(0, 4)}
+                isMovie={true}
+              />
             ))}
           </Section>
         )}
         {dramaResults && dramaResults.length > 0 && (
           <Section title="드라마 검색 결과">
             {dramaResults.map((drama) => (
-              <span key={drama.id}>{drama.name}</span>
+              <Poster
+                key={drama.id}
+                id={drama.id}
+                imageUrl={drama.poster_path}
+                title={drama.original_name}
+                rating={drama.vote_average}
+                year={drama.first_air_date.substring(0, 4)}
+              />
             ))}
           </Section>
         )}
