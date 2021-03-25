@@ -25,6 +25,7 @@
 - [ ] youtube video tab
 - [ ] IMDB link
 - [ ] Production company(logo), country
-- [ ] collection
+- [ ] Collection(movie)
+- [ ] Seasons, creators(TV)
 
 
