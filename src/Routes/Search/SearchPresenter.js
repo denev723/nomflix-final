@@ -56,7 +56,9 @@ const SearchPresenter = ({
                 title={movie.title}
                 rating={movie.vote_average}
                 imageUrl={movie.poster_path}
-                year={movie.release_date.substring(0, 4)}
+                year={
+                  movie.release_date ? movie.release_date.substring(0, 4) : null
+                }
                 isMovie={true}
               />
             ))}
@@ -71,7 +73,11 @@ const SearchPresenter = ({
                 imageUrl={drama.poster_path}
                 title={drama.original_name}
                 rating={drama.vote_average}
-                year={drama.first_air_date.substring(0, 4)}
+                year={
+                  drama.first_air_date
+                    ? drama.first_air_date.substring(0, 4)
+                    : null
+                }
               />
             ))}
           </Section>

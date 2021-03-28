@@ -22,10 +22,10 @@
 - [x] Search
 
 ## Code challenge
-- [ ] youtube video tab
-- [ ] IMDB link
-- [ ] Production company(logo), country
-- [ ] Collection(movie)
-- [ ] Seasons, creators(TV)
+- [x] youtube video tab
+- [x] IMDB link
+- [x] Production company(logo), country
+- [x] Collection(movie)
+- [x] Seasons, creators(TV)
 
 
