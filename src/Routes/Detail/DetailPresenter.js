@@ -108,11 +108,12 @@ const Overview = styled.p`
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
+  margin: 25px 0;
 `;
 
 const TrailerContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 400px);
+  grid-template-columns: repeat(auto-fill, 400px);
   grid-gap: 10px;
   margin: 40px 0;
 `;
@@ -261,22 +262,6 @@ const DetailPresenter = ({ result, loading, error }) =>
               </ProductionCompanies>
             </ProductionContainer>
             <Overview>{result.overview}</Overview>
-            <TrailerContainer>
-              {result.videos.results && result.videos.length > 0 ? (
-                <TrailerItem key={result.videos.results[0].id}>
-                  <Video
-                    width="400"
-                    height="250"
-                    src={`https://www.youtube.com/embed/${result.videos.results[0].key}`}
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></Video>
-                  <VideoTitle>{result.videos.results[0].name}</VideoTitle>
-                </TrailerItem>
-              ) : null}
-            </TrailerContainer>
             {result.seasons ? <span>Seasons : </span> : null}
             {result.belongs_to_collection || result.seasons ? (
               <>
@@ -307,6 +292,24 @@ const DetailPresenter = ({ result, loading, error }) =>
                 </CollectionContainer>
               </>
             ) : null}
+            <TrailerContainer>
+              {result.videos.results && result.videos.results.length > 0
+                ? result.videos.results.map((result) => (
+                    <TrailerItem key={result.id}>
+                      <Video
+                        width="400"
+                        height="250"
+                        src={`https://www.youtube.com/embed/${result.key}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></Video>
+                      <VideoTitle></VideoTitle>
+                    </TrailerItem>
+                  ))
+                : null}
+            </TrailerContainer>
           </Data>
         </Content>
       </Container>
