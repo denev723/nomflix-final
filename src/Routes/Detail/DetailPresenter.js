@@ -272,7 +272,11 @@ const DetailPresenter = ({ result, loading, error }) =>
                   {result.belongs_to_collection ? (
                     <CollectionItem>
                       <CollectionImage
-                        bgImage={`https://image.tmdb.org/t/p/w300${result.belongs_to_collection.poster_path}`}
+                        bgImage={
+                          result.belongs_to_collection.poster_path
+                            ? `https://image.tmdb.org/t/p/w300${result.belongs_to_collection.poster_path}`
+                            : require("../../assets/noPosterSmall.png")
+                        }
                       />
                       <CollectionTitle>
                         {result.belongs_to_collection.name}
@@ -282,7 +286,11 @@ const DetailPresenter = ({ result, loading, error }) =>
                     result.seasons.map((season) => (
                       <CollectionItem>
                         <CollectionImage
-                          bgImage={`https://image.tmdb.org/t/p/w300${season.poster_path}`}
+                          bgImage={
+                            season.poster_path
+                              ? `https://image.tmdb.org/t/p/w300${season.poster_path}`
+                              : require(`assets/noPosterSmall.png`)
+                          }
                           key={season.id}
                         />
                         <CollectionTitle>{season.name}</CollectionTitle>
