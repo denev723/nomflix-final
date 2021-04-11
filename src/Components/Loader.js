@@ -11,8 +11,10 @@ const Container = styled.div`
   font-weight: 600;
 `;
 
-export default () => (
+const Loader = () => (
   <Container>
     <span>Now Loading...</span>
   </Container>
 );
+
+export default Loader;
